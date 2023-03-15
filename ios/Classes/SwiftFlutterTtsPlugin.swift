@@ -25,7 +25,7 @@ public class SwiftFlutterTtsPlugin: NSObject, FlutterPlugin, AVSpeechSynthesizer
   init(channel: FlutterMethodChannel) {
     super.init()
     self.channel = channel
-    synthesizer.delegate = self
+    // synthesizer.delegate = self
     setLanguages()
   }
 
