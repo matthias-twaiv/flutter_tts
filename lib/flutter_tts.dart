@@ -5,8 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 typedef void ErrorHandler(dynamic message);
-typedef ProgressHandler = void Function(
-    String text, int start, int end, String word);
+typedef ProgressHandler = void Function(String text, int start, int end, String word);
 
 const String iosAudioCategoryOptionsKey = 'iosAudioCategoryOptionsKey';
 const String iosAudioCategoryKey = 'iosAudioCategoryKey';
@@ -14,23 +13,16 @@ const String iosAudioModeKey = 'iosAudioModeKey';
 const String iosAudioCategoryAmbientSolo = 'iosAudioCategoryAmbientSolo';
 const String iosAudioCategoryAmbient = 'iosAudioCategoryAmbient';
 const String iosAudioCategoryPlayback = 'iosAudioCategoryPlayback';
-const String iosAudioCategoryPlaybackAndRecord =
-    'iosAudioCategoryPlaybackAndRecord';
+const String iosAudioCategoryPlaybackAndRecord = 'iosAudioCategoryPlaybackAndRecord';
 
-const String iosAudioCategoryOptionsMixWithOthers =
-    'iosAudioCategoryOptionsMixWithOthers';
-const String iosAudioCategoryOptionsDuckOthers =
-    'iosAudioCategoryOptionsDuckOthers';
+const String iosAudioCategoryOptionsMixWithOthers = 'iosAudioCategoryOptionsMixWithOthers';
+const String iosAudioCategoryOptionsDuckOthers = 'iosAudioCategoryOptionsDuckOthers';
 const String iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers =
     'iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers';
-const String iosAudioCategoryOptionsAllowBluetooth =
-    'iosAudioCategoryOptionsAllowBluetooth';
-const String iosAudioCategoryOptionsAllowBluetoothA2DP =
-    'iosAudioCategoryOptionsAllowBluetoothA2DP';
-const String iosAudioCategoryOptionsAllowAirPlay =
-    'iosAudioCategoryOptionsAllowAirPlay';
-const String iosAudioCategoryOptionsDefaultToSpeaker =
-    'iosAudioCategoryOptionsDefaultToSpeaker';
+const String iosAudioCategoryOptionsAllowBluetooth = 'iosAudioCategoryOptionsAllowBluetooth';
+const String iosAudioCategoryOptionsAllowBluetoothA2DP = 'iosAudioCategoryOptionsAllowBluetoothA2DP';
+const String iosAudioCategoryOptionsAllowAirPlay = 'iosAudioCategoryOptionsAllowAirPlay';
+const String iosAudioCategoryOptionsDefaultToSpeaker = 'iosAudioCategoryOptionsDefaultToSpeaker';
 
 const String iosAudioModeDefault = 'iosAudioModeDefault';
 const String iosAudioModeGameChat = 'iosAudioModeGameChat';
@@ -144,8 +136,7 @@ class FlutterTts {
       await _channel.invokeMethod('awaitSynthCompletion', awaitCompletion);
 
   /// [Future] which invokes the platform specific method for speaking
-  Future<dynamic> speak(String text) async =>
-      await _channel.invokeMethod('speak', text);
+  Future<dynamic> speak(String text) async => await _channel.invokeMethod('speak', text);
 
   /// [Future] which invokes the platform specific method for pause
   Future<dynamic> pause() async => await _channel.invokeMethod('pause');
@@ -165,50 +156,38 @@ class FlutterTts {
       });
 
   /// [Future] which invokes the platform specific method for setLanguage
-  Future<dynamic> setLanguage(String language) async =>
-      await _channel.invokeMethod('setLanguage', language);
+  Future<dynamic> setLanguage(String language) async => await _channel.invokeMethod('setLanguage', language);
 
   /// [Future] which invokes the platform specific method for setSpeechRate
   /// Allowed values are in the range from 0.0 (slowest) to 1.0 (fastest)
-  Future<dynamic> setSpeechRate(double rate) async =>
-      await _channel.invokeMethod('setSpeechRate', rate);
+  Future<dynamic> setSpeechRate(double rate) async => await _channel.invokeMethod('setSpeechRate', rate);
 
   /// [Future] which invokes the platform specific method for setVolume
   /// Allowed values are in the range from 0.0 (silent) to 1.0 (loudest)
-  Future<dynamic> setVolume(double volume) async =>
-      await _channel.invokeMethod('setVolume', volume);
+  Future<dynamic> setVolume(double volume) async => await _channel.invokeMethod('setVolume', volume);
 
   /// [Future] which invokes the platform specific method for shared instance
   /// ***iOS supported only***
-  Future<dynamic> setSharedInstance(bool sharedSession) async =>
-      await _channel.invokeMethod('setSharedInstance', sharedSession);
+  Future<dynamic> setSharedInstance(bool sharedSession) async => await _channel.invokeMethod('setSharedInstance', sharedSession);
 
   /// [Future] which invokes the platform specific method for setting audio category
   /// ***Ios supported only***
-  Future<dynamic> setIosAudioCategory(IosTextToSpeechAudioCategory category,
-      List<IosTextToSpeechAudioCategoryOptions> options,
-      [IosTextToSpeechAudioMode mode =
-          IosTextToSpeechAudioMode.defaultMode]) async {
+  Future<dynamic> setIosAudioCategory(IosTextToSpeechAudioCategory category, List<IosTextToSpeechAudioCategoryOptions> options,
+      [IosTextToSpeechAudioMode mode = IosTextToSpeechAudioMode.defaultMode]) async {
     const categoryToString = <IosTextToSpeechAudioCategory, String>{
       IosTextToSpeechAudioCategory.ambientSolo: iosAudioCategoryAmbientSolo,
       IosTextToSpeechAudioCategory.ambient: iosAudioCategoryAmbient,
       IosTextToSpeechAudioCategory.playback: iosAudioCategoryPlayback
     };
     const optionsToString = {
-      IosTextToSpeechAudioCategoryOptions.mixWithOthers:
-          'iosAudioCategoryOptionsMixWithOthers',
-      IosTextToSpeechAudioCategoryOptions.duckOthers:
-          'iosAudioCategoryOptionsDuckOthers',
+      IosTextToSpeechAudioCategoryOptions.mixWithOthers: 'iosAudioCategoryOptionsMixWithOthers',
+      IosTextToSpeechAudioCategoryOptions.duckOthers: 'iosAudioCategoryOptionsDuckOthers',
       IosTextToSpeechAudioCategoryOptions.interruptSpokenAudioAndMixWithOthers:
           'iosAudioCategoryOptionsInterruptSpokenAudioAndMixWithOthers',
-      IosTextToSpeechAudioCategoryOptions.allowBluetooth:
-          'iosAudioCategoryOptionsAllowBluetooth',
-      IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP:
-          'iosAudioCategoryOptionsAllowBluetoothA2DP',
-      IosTextToSpeechAudioCategoryOptions.allowAirPlay:
-          'iosAudioCategoryOptionsAllowAirPlay',
-      IosTextToSpeechAudioCategoryOptions.defaultToSpeaker:
-          'iosAudioCategoryOptionsDefaultToSpeaker',
+      IosTextToSpeechAudioCategoryOptions.allowBluetooth: 'iosAudioCategoryOptionsAllowBluetooth',
+      IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP: 'iosAudioCategoryOptionsAllowBluetoothA2DP',
+      IosTextToSpeechAudioCategoryOptions.allowAirPlay: 'iosAudioCategoryOptionsAllowAirPlay',
+      IosTextToSpeechAudioCategoryOptions.defaultToSpeaker: 'iosAudioCategoryOptionsDefaultToSpeaker',
     };
     const modeToString = <IosTextToSpeechAudioMode, String>{
       IosTextToSpeechAudioMode.defaultMode: iosAudioModeDefault,
@@ -223,18 +202,18 @@ class FlutterTts {
     };
     if (!Platform.isIOS) return;
     try {
-      return await _channel
-          .invokeMethod<dynamic>('setIosAudioCategory', <String, dynamic>{
+      return await _channel.invokeMethod<dynamic>('setIosAudioCategory', <String, dynamic>{
         iosAudioCategoryKey: categoryToString[category],
-        iosAudioCategoryOptionsKey:
-            options.map((o) => optionsToString[o]).toList(),
+        iosAudioCategoryOptionsKey: options.map((o) => optionsToString[o]).toList(),
         iosAudioModeKey: modeToString[mode],
       });
     } on PlatformException catch (e) {
-      print(
-          'setIosAudioCategory error, category: $category, mode: $mode, error: ${e.message}');
+      print('setIosAudioCategory error, category: $category, mode: $mode, error: ${e.message}');
     }
   }
+
+  /// [Future] which invokes the platform specific method for complete (iOS only)
+  Future<dynamic> complete() async => await _channel.invokeMethod('complete');
 
   /// [Future] which invokes the platform specific method for setEngine
   /// ***Android supported only***
@@ -247,13 +226,11 @@ class FlutterTts {
 
   /// [Future] which invokes the platform specific method for setPitch
   /// 1.0 is default and ranges from .5 to 2.0
-  Future<dynamic> setPitch(double pitch) async =>
-      await _channel.invokeMethod('setPitch', pitch);
+  Future<dynamic> setPitch(double pitch) async => await _channel.invokeMethod('setPitch', pitch);
 
   /// [Future] which invokes the platform specific method for setVoice
   /// ***Android, iOS, and macOS supported only***
-  Future<dynamic> setVoice(Map<String, String> voice) async =>
-      await _channel.invokeMethod('setVoice', voice);
+  Future<dynamic> setVoice(Map<String, String> voice) async => await _channel.invokeMethod('setVoice', voice);
 
   /// [Future] which invokes the platform specific method for stop
   Future<dynamic> stop() async => await _channel.invokeMethod('stop');
@@ -300,14 +277,12 @@ class FlutterTts {
 
   /// [Future] which invokes the platform specific method for isLanguageAvailable
   /// Returns `true` or `false`
-  Future<dynamic> isLanguageAvailable(String language) async =>
-      await _channel.invokeMethod('isLanguageAvailable', language);
+  Future<dynamic> isLanguageAvailable(String language) async => await _channel.invokeMethod('isLanguageAvailable', language);
 
   /// [Future] which invokes the platform specific method for isLanguageInstalled
   /// Returns `true` or `false`
   /// ***Android supported only***
-  Future<dynamic> isLanguageInstalled(String language) async =>
-      await _channel.invokeMethod('isLanguageInstalled', language);
+  Future<dynamic> isLanguageInstalled(String language) async => await _channel.invokeMethod('isLanguageInstalled', language);
 
   /// [Future] which invokes the platform specific method for areLanguagesInstalled
   /// Returns a HashMap with `true` or `false` for each submitted language.
@@ -316,14 +291,12 @@ class FlutterTts {
       await _channel.invokeMethod('areLanguagesInstalled', languages);
 
   Future<SpeechRateValidRange> get getSpeechRateValidRange async {
-    final validRange = await _channel.invokeMethod('getSpeechRateValidRange')
-        as Map<dynamic, dynamic>;
+    final validRange = await _channel.invokeMethod('getSpeechRateValidRange') as Map<dynamic, dynamic>;
     final min = double.parse(validRange['min'].toString());
     final normal = double.parse(validRange['normal'].toString());
     final max = double.parse(validRange['max'].toString());
     final platformStr = validRange['platform'].toString();
-    final platform = TextToSpeechPlatform.values
-        .firstWhere((e) => describeEnum(e) == platformStr);
+    final platform = TextToSpeechPlatform.values.firstWhere((e) => describeEnum(e) == platformStr);
 
     return SpeechRateValidRange(min, normal, max, platform);
   }
@@ -331,16 +304,14 @@ class FlutterTts {
   /// [Future] which invokes the platform specific method for setSilence
   /// 0 means start the utterance immediately. If the value is greater than zero a silence period in milliseconds is set according to the parameter
   /// ***Android supported only***
-  Future<dynamic> setSilence(int timems) async =>
-      await _channel.invokeMethod('setSilence', timems);
+  Future<dynamic> setSilence(int timems) async => await _channel.invokeMethod('setSilence', timems);
 
   /// [Future] which invokes the platform specific method for setQueueMode
   /// 0 means QUEUE_FLUSH - Queue mode where all entries in the playback queue (media to be played and text to be synthesized) are dropped and replaced by the new entry.
   /// Queues are flushed with respect to a given calling app. Entries in the queue from other callees are not discarded.
   /// 1 means QUEUE_ADD - Queue mode where the new entry is added at the end of the playback queue.
   /// ***Android supported only***
-  Future<dynamic> setQueueMode(int queueMode) async =>
-      await _channel.invokeMethod('setQueueMode', queueMode);
+  Future<dynamic> setQueueMode(int queueMode) async => await _channel.invokeMethod('setQueueMode', queueMode);
 
   void setStartHandler(VoidCallback callback) {
     startHandler = callback;

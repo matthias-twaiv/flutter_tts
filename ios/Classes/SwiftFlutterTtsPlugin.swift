@@ -122,6 +122,16 @@ public class SwiftFlutterTtsPlugin: NSObject, FlutterPlugin, AVSpeechSynthesizer
       let audioModes = args[iosAudioModeKey] as? String
       self.setAudioCategory(audioCategory: audioCategory, audioOptions: audioOptions, audioMode: audioModes, result: result)
       break
+    case "complete":
+      if shouldDeactivateAndNotifyOthers(audioSession) {
+        do {
+        try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        } catch {
+          print(error)
+        }
+      result(1)
+      break
+    }
     default:
       result(FlutterMethodNotImplemented)
     }
